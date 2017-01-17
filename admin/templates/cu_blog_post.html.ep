@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://v4-alpha.getbootstrap.com/favicon.ico">
+
+    <title>Longboard Bulgaria - admin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="libs/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="style.css" rel="stylesheet">
+</head>
+    
+  <body>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="home">LB Bulgaria</a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="blog_posts">Blog posts</a>
+          </li>
+        </ul>
+            <form class="form-inline my-2 my-lg-0" action="signout" method="POST">
+                <span style="margin-right: 1rem; color: white; font-weight: bold;"><%= $current_user %></span>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log OUT</button>
+            </form>
+      </div>
+    </nav>
+
+    <div class="container">
+        <div class="starter-template">
+            <h2>Post edditor</h2>
+        </div>
+        <form action="cu_blog_post" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="id" value="<%= $$blog_post{id} %>"/>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" value="<%= $$blog_post{title} %>" id="title" name="title" placeholder="Blog title" required>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" rows="3" name="descr" placeholder="Blog short description" required><%= $$blog_post{descr} %></textarea>
+          </div> 
+          <div class="form-group">
+            <label for="content">Content</label>
+            <textarea class="form-control" id="content" name="content" placeholder="Blog content" required><%= $$blog_post{content} %></textarea>
+          </div>
+          <img src="images/blog-posts/<%= $$blog_post{id} %>-title.jpg" style="width: 10rem; height: auto;" alt=""/>
+          <div class="form-group">
+            <label for="title-image">Title Image</label>
+            <input type="file" class="form-control-file" id="title-image" name="title-image" aria-describedby="Title Image upload">
+          </div>
+          <img src="images/blog-posts/<%= $$blog_post{id} %>.jpg" style="width: 30rem; height: auto;" alt=""/>
+          <div class="form-group">
+            <label for="main-image">Main Image</label>
+            <input type="file" class="form-control-file" id="main-image" name="main-image" aria-describedby="Main Image upload">
+          </div>
+
+            <button class="btn btn-primary" >Submit</button>
+        </form>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="jquery-3.js"></script>
+  
+    <script src="libs/bootstrap/js/bootstrap.js"></script>
+
+</body></html>

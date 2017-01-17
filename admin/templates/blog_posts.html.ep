@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://v4-alpha.getbootstrap.com/favicon.ico">
+
+    <title>Longboard Bulgaria - admin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="libs/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="style.css" rel="stylesheet">
+</head>
+    
+  <body>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="home">LB Bulgaria</a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="blog_posts">Blog posts</a>
+          </li>
+        </ul>
+            <form class="form-inline my-2 my-lg-0" action="signout" method="POST">
+                <span style="margin-right: 1rem; color: white; font-weight: bold;"><%= $current_user %></span>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log OUT</button>
+            </form>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="starter-template">
+           <table class="table table-bordered">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th><a class="btn btn-success" href="cu_blog_post"><b>New</b></a></th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="table-striped">
+                %for my $post (@$blog_posts) {
+                    <tr>
+                        <td><a class="btn btn-primary" href="cu_blog_post?id=<%= $$post{id} %>"><b>Edit</b></a></td>
+                        <td><%= $$post{title} %></td>
+                        <td><%= $$post{descr} %></td>
+                        <td>
+                           <img src="images/blog-posts/<%= $$post{id} %>-title.jpg" style="width: 5rem; height: auto;" alt=""/> 
+                        </td>
+                    </tr>
+                %}
+                </tbody>
+            </table> 
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="jquery-3.js"></script>
+  
+    <script src="libs/bootstrap/js/bootstrap.js"></script>
+
+</body></html>

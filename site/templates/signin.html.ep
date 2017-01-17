@@ -1,0 +1,107 @@
+<!doctype html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Longboard Bulgaria</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<link rel="stylesheet" type="text/css" href="css/mobile.css">
+	<script src="js/mobile.js" type="text/javascript"></script>
+</head>
+<body>
+	<div id="page">
+		<div id="header">
+			<div>
+				<a href="home" class="logo"><img src="images/logo.svg" style="height: 3.5em;" alt=""></a>
+                <ul id="navigation">
+					<li>
+						<a href="home">Home</a>
+					</li>
+					<li class="menu">
+						<a href="guides">Guides</a>
+					</li>
+
+					<li class="menu">
+						<a href="blog">Blog</a>
+					</li>
+					<li>
+						<a href="contact">Contact</a>
+					</li>
+                    <li class="selected">
+						<a href="<%= $current_user_action %>"><%= $current_user %></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="body" style='background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/bg-repeat.jpg") repeat scroll 0% 0%;'>
+			<div class="header">
+				<div class="contact" id="signin-form-container" style="display: <%= $sign_in_display %>;">
+					<h1>Sign IN</h1>
+					<form action="signin" method="POST">
+                        % if($is_fail_login) {
+                            <span style="color: red"><%= $fail_login_msg %></span>
+                        %}
+						<input id="signin-username" type="text" name="username" value="<%= $username %>" placeholder="Username" required/>
+						<input id="signin-password" type="password" name="password" placeholder="Password"  required/>
+						<input type="submit" value="Sign IN" id="submit" />
+                        <a style="margin-right: 3em; background-color: #0f3c13; float:left;" class="form-btn" onclick="showRegister()">Register</a>
+					</form>
+				</div>
+
+                <div class="contact" id="register-form-container" style="display: <%= $register_display %>;">
+                    <h1>Register</h1>
+                    <form action="register" method="POST">
+                        % if($is_fail_register) {
+                            <span style="color: red"><%= $fail_register_msg %></span>
+                        %}
+                        <input id="register-username" type="text" name="username" value="<%= $username %>" placeholder="Username" required/>
+                        <input id="register-password" type="password" name="password" placeholder="Password" required/>
+                        <input id="register-confirm-password" type="password" name="confirm_password" placeholder="Confirm password" required/>
+                        <input id="register-email" type="email" name="email" value="<%= $email %>" placeholder="Email" required/>
+                        <input id="register-first-name" type="text" name="first_name" value="<%= $first_name %>" placeholder="First name" required/>
+                        <input id="register-last-name" type="text" name="last_name" value="<%= $last_name %>" placeholder="Last name" required/>
+                        <input type="submit" value="Register" id="submit" />
+                        <a style="margin-right: 3em; background-color: #0f3c13; float:left;" class="form-btn" onclick="showSignIN()" >Back to Sign IN</a>
+                    </form>
+                </div>
+			</div>
+            <script>
+                function showSignIN() {
+                    document.getElementById("signin-username").value='';
+                    document.getElementById("signin-password").value='';
+                    document.getElementById("register-form-container").style.display = 'none';
+                    document.getElementById("signin-form-container").style.display = 'block';
+                }
+
+                function showRegister() {
+                    document.getElementById("register-username").value='';
+                    document.getElementById("register-password").value='';
+                    document.getElementById("register-confirm-password").value='';
+                    document.getElementById("register-email").value='';
+                    document.getElementById("register-first-name").value='';
+                    document.getElementById("register-last-name").value='';
+                    document.getElementById("register-form-container").style.display = 'block';
+                    document.getElementById("signin-form-container").style.display = 'none';
+                }
+
+            </script>
+		</div>
+		<div id="footer">
+			<div class="connect">
+				<div>
+					<h1>FOLLOW US ON</h1>
+					<div>
+						<a href="https://www.facebook.com/groups/229324590421163/" class="facebook">facebook</a>
+					</div>
+				</div>
+			</div>
+			<div class="footnote">
+				<div>
+					<p>&copy; 2017 BY LONGBOARD BULGARIA | ALL RIGHTS RESERVED</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
